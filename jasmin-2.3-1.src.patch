@@ -1,0 +1,45 @@
+Files origsrc/jasmin-2.3/jasmin.jar and src/jasmin-2.3/jasmin.jar differ
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in -x parser.java -x sym.java origsrc/jasmin-2.3/makefile src/jasmin-2.3/makefile
+--- origsrc/jasmin-2.3/makefile	2006-03-17 01:14:32.000000000 -0600
++++ src/jasmin-2.3/makefile	2007-03-16 17:13:44.984375000 -0500
+@@ -1,4 +1,7 @@
+ JDK = E:/JDK/BIN/
++JAR = $(JDK)jar
++JAVA = $(JDK)java
++JAVAC = $(JDK)javac
+ 
+ SRC = src/Jasmin.java \
+       src/jasmin/ClassFile.java \
+@@ -115,24 +118,23 @@
+ ##########################################################################
+ 
+ jasmin.jar : $(SRC)
+-    @if not exist out\nul mkdir out
+-    @$(JDK)javac -source 1.2 -target 1.1 -d out -cp src src/Jasmin.java
+-    @$(JDK)jar cfm jasmin.jar src/jasmin.mf -C out .
++	@mkdir -p out
++	@$(JAVAC) -source 1.3 -target 1.1 -d out -cp src src/Jasmin.java
++	@$(JAR) cfm jasmin.jar src/jasmin.mf -C out .
+ 
+ src/jasmin/parser.java:
+ src/jasmin/sym.java: src/jasmin/parser.cup java_cup.jar
+-    @$(JDK)java -jar java_cup.jar -out src/jasmin -nosummary <src/jasmin/parser.cup
++	@$(JAVA) -jar java_cup.jar -out src/jasmin -nosummary <src/jasmin/parser.cup
+ 
+ 
+ ######################
+ java_cup.jar : $(CUP)
+-    @if not exist out_cup\nul mkdir out_cup
+-    @if exist java_cup.jar copy java_cup.jar out_cup >nul
+-    @$(JDK)javac -source 1.2 -target 1.1 -d out_cup -cp src src/java_cup/Main.java
+-    @$(JDK)jar cfm java_cup.jar src/java_cup.mf -C out_cup .
++	@mkdir -p out_cup
++	@$(JAVAC) -source 1.3 -target 1.1 -d out_cup -cp src src/java_cup/Main.java
++	@$(JAR) cfm java_cup.jar src/java_cup.mf -C out_cup .
+ 
+ src/java_cup/parser.java:
+ src/java_cup/sym.java: src/java_cup/parser.cup
+-    @$(JDK)java -jar java_cup.jar -out src/java_cup -nosummary <src/java_cup/parser.cup
++	@$(JAVA) -jar java_cup.jar -out src/java_cup -nosummary <src/java_cup/parser.cup
+ 
+ #########EOF######
