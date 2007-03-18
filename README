@@ -13,6 +13,7 @@ Build requirements:
   cygwin-1.5.23-2
   cygport-0.3.1-1
   classpath-0.93-1
+  gcc-java-3.4.4-3
   jamvm-1.4.5-1
   jikes-1.22-4
   make-3.81-1
@@ -41,6 +42,7 @@ This will create:
 Files included in the binary package:
 
   /usr/bin/jasmin
+  /usr/bin/jasminc.exe
   /usr/share/doc/Cygwin/jasmin-2.3.README
   /usr/share/doc/jasmin-2.3/Changes.txt
   /usr/share/doc/jasmin-2.3/README.txt

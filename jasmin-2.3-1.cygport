@@ -11,10 +11,12 @@ src_compile() {
 	cd ${B}
 	rm -f ${PN}.jar
 	cygmake -j1 JAR=${JAR} JAVA=${JAVA} JAVAC=${JAVAC}
+	${GCJ} ${GCJFLAGS} --main=jasmin.Main -o ${PN}c.exe ${PN}.jar
 }
 
 src_install() {
 	cd ${B}
+	dobin ${PN}c.exe
 	dojar ${PN}.jar
 	java_wrapper ${PN} "-jar ${JAVA_DIR}/${PN}.jar"
 
