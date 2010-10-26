@@ -1,0 +1,14 @@
+inherit ant
+
+DESCRIPTION="Java assembler"
+HOMEPAGE="http://jasmin.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
+
+DISTCLEANFILES="*.jar"
+
+ANT_BUILD_TARGETS="all docs"
+ANT_INSTALL_JARS="jasmin.jar"
+ANT_INSTALL_JAVADOC="docs/api"
+ANT_INSTALL_WRAPPERS="jasmin,jasmin.jar"
+
+DOCS="*.txt"

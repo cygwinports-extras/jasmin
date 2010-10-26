@@ -1,6 +1,6 @@
 category: Java
-requires: classpath jamvm
-sdesc: "Java VM assembler"
+requires: jamvm
+sdesc: "Java assembler"
 ldesc: "Jasmin is an assembler for the Java Virtual Machine. It takes ASCII
 descriptions of Java classes, written in a simple assembler-like syntax
 using the Java Virtual Machine instruction set. It converts them into
